@@ -1,0 +1,14 @@
+{
+  "logo.src" : "Images/LogoEng.png",
+  "nav.find" : "Find a Therapist",
+  "nav.blog" : "Blog",
+  "nav.join" : "Join Our Team",
+  "nav.contact" : "Contact Us",
+  "lang.en" : "English",
+  "lang.ru" : "Russian",
+  "lang.amw" : "Armenian W",
+  "lang.ame" : "Armenian E",
+  "header.title" : "Find a therapist that’s right for you.",
+  "header.par" : "Making mental health more accessible --",
+  "header.button" : "Let's Go"
+}
