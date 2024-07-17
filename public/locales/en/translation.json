@@ -1,14 +1,61 @@
 {
   "logo.src" : "Images/LogoEng.png",
-  "nav.find" : "Find a Therapist",
-  "nav.blog" : "Blog",
-  "nav.join" : "Join Our Team",
-  "nav.contact" : "Contact Us",
-  "lang.en" : "English",
-  "lang.ru" : "Russian",
-  "lang.amw" : "Armenian W",
-  "lang.ame" : "Armenian E",
-  "header.title" : "Find a therapist that’s right for you.",
-  "header.par" : "Making mental health more accessible --",
-  "header.button" : "Let's Go"
+  "nav" : {
+    "find" : "Find a Therapist",
+    "blog" : "Blog",
+    "join" : "Join Our Team",
+    "contact" : "Contact Us"
+  },
+  "header" : {
+    "title" : "Experience the\ncomfort of online\ntherapy.",
+    "par" : "Discover a safe space where you can explore\nyour inner world and grow with the help of our\ndedicated therapists.",
+    "button" : "Let's Go"
+  },
+  "aboutus" : {
+    "title" : "Welcome to Pattug - A Warm Hug for Your Mental Health",
+    "par" : "“Pattug” is a Western Armenian word that means “hug.” Just like a hug, we believe that taking care of your mental health should feel comforting and supportive. Our mission is to make therapy as accessible and welcoming as possible for you.\n\nWe’re here to make your mental health journey smoother. With a wide range of qualified therapists to choose from, you can find the perfect match for your needs. Enjoy the benefits of online therapy from the comfort of your home, complete with easy appointment scheduling and payment options.\n\nAt Pattug, we believe everyone deserves the support they need. Join us in making your mental well-being a priority.",
+    "endTitle" : "Give yourself a hug."
+  },
+  "joinus" : {
+    "title" : "Welcome to Pattug! \nWe would love to have you\non our team.",
+    "par" : "We make it easier for you to deliver quality mental health care.",
+    "title2": "JOB DESCRIPTION",
+    "description": "Pattug is an online therapy platform designed to connect clients and therapists. We are always looking for caring and empathetic therapists to join our team and provide quality mental heath care to our clients.",
+    "benefitsTitle": "Benefits of working with us:",
+    "benefit1": "Work from anywhere and enjoy the flexibility of choosing your own schedule.",
+    "benefit2": "Gain unlimited access to a secure video call platform to conduct your sessions.",
+    "benefit3": "Find clients effortlessly without having to promote your own social media page.\n",
+    "benefit4": "Have access to easy appointment scheduling tools.",
+    "benefit5": "Get paid instantly after every appointment.",
+    "qualityNote": "Important: As quality is of utmost importance to us, we only accept applications from therapists who have a university degree in Psychology and are trained (or are in later stages of an ongoing training) in a specific therapy approach.",
+    "last": "Please fill out the application form below and we will contact you.",
+    "applyButton": "Apply now",
+    "thankyou": "Thank you for your application.\nWe will review it and get in touch with you in the next 2 business days."
+  },
+  "applicationForm": {
+    "firstName": "First Name:",
+    "lastName": "Last Name:",
+    "phoneNumber": "Phone number: (+country code)",
+    "email": "Email:",
+    "password": "Password:",
+    "universityDiploma": "University diploma",
+    "trainingCertifications": "Training certifications",
+    "chooseFile": "Choose a file...",
+    "languages": "What languages can you provide therapy in?",
+    "languagesOther" : "Other:",
+    "chargePerSession": "How much would you like to charge per session?",
+    "paymentNote": "*Please be aware that the website will be taking 20% of each payment.",
+    "refuseDemographics": "Are there any issues or demographics you would refuse to work with?",
+    "typePlaceholder": "Type...",
+    "applyButton": "Apply now"
+  },
+  "contactUs": {
+    "title": "We value your feedback",
+    "par": "Let us know if you have any questions, comments, or suggestions."
+  },
+  "contactForm": {
+    "title": "Send a message\n and we will get back to you.",
+    "email": "Email",
+    "message": "Write your message..."
+  }
 }

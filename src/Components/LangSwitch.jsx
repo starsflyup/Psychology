@@ -18,10 +18,10 @@ const LanguageSwitcher = () => {
         onChange={handleChange}
         className="appearance-none bg-transparent border-none text-white font-bold py-0 pl-4 pr-12 rounded-lg focus:outline-none"
       >
-        <option value="en">{t('lang.en')}</option>
-        <option value="ru">{t('lang.ru')}</option>
-        <option value="amw">{t('lang.amw')}</option>
-        <option value="ame">{t('lang.ame')}</option>
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+        <option value="ame">Արևելահայերեն</option>
+        <option value="amw">Արեւմտահայերէն</option>
       </select>
       <div className="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none pl-[8px] border-white border-l-4">
         <svg className="w-4 h-4 fill-current text-white" viewBox="0 0 20 20">
