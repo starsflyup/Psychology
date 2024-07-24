@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { BookingProfile } from "./BookingProfile";
+import { BookingProfile } from './BookingProfile';
+import { Filters } from './Filters';
 
 const initialTherapists = [
-  { name: 'Sangmu Patel', rate: '$30/session', imgSrc: 'path/to/image1.jpg' },
-  { name: 'Guanyu Hsu', rate: '$25/session', imgSrc: 'path/to/image2.jpg' },
-  { name: 'Fayroz Rafiq', rate: '$40/session', imgSrc: 'path/to/image3.jpg' },
-  { name: 'Easd Aslani', rate: '$12/session', imgSrc: 'path/to/image3.jpg' },
-  { name: 'Karim Debayi', rate: '$20/session', imgSrc: 'path/to/image3.jpg' },
+  { name: 'Sangmu Patel', rate: 30, imgSrc: 'path/to/image1.jpg', available: true, budget: '10000-15000', languages: ['English', 'Armenian'], therapy: 'CBT', issue: 'Anxiety' },
+  { name: 'Guanyu Hsu', rate: 25, imgSrc: 'path/to/image2.jpg', available: false, budget: '15000-20000', languages: ['English'], therapy: 'EMDR', issue: 'Depression' },
+  { name: 'Fayroz Rafiq', rate: 40, imgSrc: 'path/to/image3.jpg', available: true, budget: '20000-25000', languages: ['Russian'], therapy: 'Existential', issue: 'Trauma' },
+  { name: 'Easd Aslani', rate: 12, imgSrc: 'path/to/image4.jpg', available: true, budget: 'Up to 10000', languages: ['Armenian'], therapy: 'CBT', issue: 'Anxiety' },
+  { name: 'Karim Debayi', rate: 20, imgSrc: 'path/to/image5.jpg', available: false, budget: '15000-20000', languages: ['English', 'Russian'], therapy: 'Existential', issue: 'Depression' },
 ];
 
 export const Therapists = () => {
@@ -15,23 +16,38 @@ export const Therapists = () => {
   const stateName = "Sangmu Patel";
   const [therapists, setTherapists] = useState(initialTherapists);
   const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({
+    availability: true,
+    budget: '',
+    language: '',
+    therapy: '',
+    issue: '',
+  });
+  const [showFilters, setShowFilters] = useState(false);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  const handleFilterChange = (newFilters) => {
+    setFilters(newFilters);
+  };
+
   const filteredTherapists = therapists.filter((therapist) => {
     const matchesSearch = therapist.name.toLowerCase().includes(searchTerm.toLowerCase());
-    // const matchesFilter = filterRate ? therapist.rate === filterRate : true;
-    // return matchesSearch && matchesFilter;
-    return matchesSearch;
+    const matchesAvailability = !filters.availability || therapist.available === filters.availability;
+    const matchesBudget = !filters.budget || therapist.budget === filters.budget;
+    const matchesLanguages = !filters.language || therapist.languages.includes(filters.language);
+    const matchesTherapy = !filters.therapy || therapist.therapy === filters.therapy;
+    const matchesIssue = !filters.issue || therapist.issue === filters.issue;
+
+    return matchesSearch && matchesAvailability && matchesBudget && matchesLanguages && matchesTherapy && matchesIssue;
   });
 
   const getName = () => {
-    switch(name) {
+    switch (name) {
       case stateName:
         return <BookingProfile />;
-
       default:
         return null;
     }
@@ -39,46 +55,50 @@ export const Therapists = () => {
 
   return (
     <>
-      {getName()}
-    <div className="max-w-screen-lg mx-auto p-4">
-      <h1 className="text-4xl font-bold">Our Therapists</h1>
-      <div className="flex justify-between items-center mb-6">
-        <div className="flex items-center space-x-4 justify-between w-full">
-          <button className="flex items-center space-x-2 bg-transparent border-2 border-gray-800 text-gray-800 font-semibold py-1 px-4 rounded-2xl">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4z"></path>
-            </svg>
-            <span>Filters</span>
-          </button>
-          <div className="relative">
-            <input
-              type="text"
-              className="border-2 border-gray-800 rounded-2xl py-1 pl-8 pr-4"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-            <svg className="w-5 h-5 text-gray-800 absolute left-2 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 4a4 4 0 100 8 4 4 0 000-8zm2 14h4m2 0h6m-6-4h.01M10 10H8m-2 0H4m6 4h.01M8 4H4m6 8h2"></path>
-            </svg>
+      <div className="max-w-screen-lg mx-auto p-4">
+        <h1 className="text-4xl text-[#362d64] font-bold">Our Therapists</h1>
+        <div className='flex mb-6 justify-between'>
+          <div className="flex justify-between items-center !justify-end">
+            <div className="relative">
+              <button
+                className="flex items-center space-x-2 bg-transparent text-[#362d64] py-1 px-4 rounded-2xl"
+                onClick={() => setShowFilters(!showFilters)}
+              >
+                <img src="/Images/filtersImage.png" alt="filters" className='w-[20px]' />
+                <span className='text-[28px] font-alike'>Filters</span>
+              </button>
+            </div>
+          </div>
+          <div className="flex justify-between items-center !justify-end">
+            <div className="relative">
+              <input
+                type="text"
+                className="border-2 border-[#362d64] rounded-2xl py-1 pl-8 pr-4"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={handleSearchChange}
+              />
+              <svg className="w-5 h-5 text-gray-800 absolute left-2 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 4a4 4 0 100 8 4 4 0 000-8zm2 14h4m2 0h6m-6-4h.01M10 10H8m-2 0H4m6 4h.01M8 4H4m6 8h2"></path>
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {filteredTherapists.map((therapist) => (
-          <a href={`/therapists/${therapist.name}`}>
-            <div key={therapist.name} className="bg-white shadow-lg rounded-lg overflow-hidden">
-              <img src={therapist.imgSrc} alt={therapist.name} className="w-full h-48 object-cover"/>
-              <div className="p-4">
-                <h2 className="text-xl font-bold text-[#7C8CFD]">{therapist.name}</h2>
-                <p className="text-gray-600">{therapist.rate}</p>
+        {showFilters && <Filters onFilterChange={handleFilterChange} />}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {filteredTherapists.map((therapist) => (
+            <a href={`/therapists/${therapist.name}`} key={therapist.name}>
+              <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+                <img src={therapist.imgSrc} alt={therapist.name} className="w-full h-48 object-cover" />
+                <div className="p-4">
+                  <h2 className="text-xl font-bold text-[#7C8CFD]">{therapist.name}</h2>
+                  <p className="text-gray-600">{therapist.rate}/session</p>
+                </div>
               </div>
-            </div>
-          </a>
-        ))}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 };
-

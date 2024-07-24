@@ -13,6 +13,8 @@ import {ContactUs} from "./ContactUs";
 import {ContactForm} from "./ContactForm";
 import {BookingProfile} from "./BookingProfile";
 import {Blog} from "./Blog";
+import {SignUp} from "./SignUp";
+import {LogIn} from "./LogIn";
 
 function App() {
   const page = window.location.pathname.split('/')[1];
@@ -52,6 +54,14 @@ function App() {
     {
       path: "/blog",
       element: <Blog />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
+    },
+    {
+      path: "/login",
+      element: <LogIn />,
     },
 
   ]);

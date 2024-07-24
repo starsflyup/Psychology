@@ -36,10 +36,10 @@ export const Blog = () => {
 
   return (
     <div className="bg-[#efbc75] p-8 font-sans">
-      <div className="grid grid-cols-3 gap-8 justify-items-center">
+      <div className="grid grid-cols-3 gap-8 justify-items-center items-end">
         <div className='flex col-span-2'>
-          <img src="/Images/blog.png" alt="blog" className='w-[200px]'/>
-          <h1 className="text-center text-[64px] text-[#fff8ef] mb-8 font-coustard">Blog Posts</h1>
+          <img src="/Images/blog.png" alt="blog" className='w-[250px]'/>
+          <h1 className="text-center text-[64px] text-[#fff8ef] font-coustard">Blog Posts</h1>
         </div>
         {posts.map((post, index) => (
           <div key={index} className="bg-[#fdf6eb] p-6 shadow-md w-[317px] h-[256px] flex flex-col">

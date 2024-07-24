@@ -3,27 +3,16 @@ import {useTranslation} from 'react-i18next';
 
 export const Apply = () => {
   const { t } = useTranslation();
-  const [selectedLanguages, setSelectedLanguages] = useState([]);
   const [currency, setCurrency] = useState('amd');
+  const [language, setLanguage] = useState('');
 
   const handleCurrencyChange = (event) => {
     setCurrency(event.target.value);
   };
 
-  const languageOptions = [
-    { value: 'english', label: 'English' },
-    { value: 'russian', label: 'Русский' },
-    { value: 'armw', label: 'Արեւմտահայերէն' },
-    { value: 'arme', label: 'Արևելահայերեն' },
-  ];
-
   const handleLanguageChange = (event) => {
-    const value = event.target.value;
-    setSelectedLanguages(prevSelected =>
-      prevSelected.includes(value)
-        ? prevSelected.filter(lang => lang !== value)
-        : [...prevSelected, value]
-    );
+    setLanguage(event.target.value);
+    console.log(language);
   };
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -109,26 +98,35 @@ export const Apply = () => {
             </div>
           </div>
           <div>
-            <label className="block text-gray-700">{t('applicationForm.languages')}</label>
-            <div className="mt-1 grid grid-cols-2 gap-4">
-              {languageOptions.map(option => (
-                <div key={option.value} className="flex items-center justify-center">
-                  <input
-                    type="checkbox"
-                    value={option.value}
-                    onChange={handleLanguageChange}
-                    className="mr-2"
-                  />
-                  <label className="text-gray-700">{option.label}</label>
-                </div>
-              ))}
-              </div>
             <div className="bg-white p-4 rounded-lg">
               <div className="relative bg-inherit">
-                <input type="text" id="username" name="username"
+                <select
+                  id="language"
+                  name="language"
+                  value={language}
+                  onChange={handleLanguageChange}
+                  className="peer bg-transparent h-10 w-full rounded-lg text-gray-900 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
+                  placeholder="">
+                  <option value="" disabled selected hidden></option>
+                  <option value="am">Armenian</option>
+                  <option value="en">English</option>
+                  <option value="ru">Russian</option>
+                  <option value="fr">French</option>
+                  <option value="dе">German</option>
+                  <option value="es">Spanish</option>
+                  <option value="ar">Arabic</option>
+                  <option value="fa">Persian</option>
+                  <option value="other">Other</option>
+                </select>
+                <label htmlFor="currency"
+                       className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">{t('applicationForm.languages')}</label>
+              </div>
+            <div className={`bg-white rounded-lg mt-4 ${language !== 'other' ? 'hidden' : ''}`}>
+              <div className="relative bg-inherit">
+                <input type="text" id="otherLang" name="otherLang"
                        className="peer bg-transparent h-10 w-full rounded-lg text-gray-900 placeholder-transparent ring-2 px-2 ring-gray-500 focus:ring-sky-600 focus:outline-none focus:border-rose-600"
                        placeholder={t('applicationForm.languagesOther')}/>
-                <label htmlFor="username"
+                <label htmlFor="otherLang"
                        className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">{t('applicationForm.languagesOther')}</label>
               </div>
             </div>
@@ -160,9 +158,9 @@ export const Apply = () => {
                        className="absolute cursor-text left-0 -top-3 text-sm text-gray-500 bg-inherit mx-1 px-1 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3 peer-focus:text-sky-600 peer-focus:text-sm transition-all">Currency</label>
               </div>
             </div>
-
+            </div>
           </div>
-          <p className="text-gray-600">{t('applicationForm.paymentNote')}</p>
+          <p className="text-gray-600 !mt-0 ml-4 text-left">{t('applicationForm.paymentNote')}</p>
           <div className="bg-white p-4 rounded-lg">
             <div className="relative bg-inherit">
               <input type="text" id="username" name="username"
@@ -174,7 +172,7 @@ export const Apply = () => {
           </div>
           <a href="/joinus/thankyou">
             <button className="bg-[#7EC6AD] hover:bg-[#6dad97] w-[140px] h-[54px] text-white font-bold py-2 px-4 rounded-xl mt-10">
-              {t('joinus.applyButton')}
+              {t('applicationForm.applyButton')}
             </button>
           </a>
         </form>

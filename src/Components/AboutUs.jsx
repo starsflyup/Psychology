@@ -11,7 +11,7 @@ export const AboutUs = () => {
         <h1 className='font-alike text-white text-[41px] font-bold mb-8'>{t("aboutus.title")}</h1>
         <p className='font-alike text-white text-[28px] whitespace-pre-line'>{t("aboutus.par")}</p>
         <h3 className='font-alike text-white text-[35px] font-bold mt-20'>{t("aboutus.endTitle")}</h3>
-        <img src='/Images/homepage2.png' alt='hug' className='w-[157px] mt-8'/>
+        <img src='/Images/homepage2.png' alt='hug' className='w-[157px]'/>
       </div>
     </div>
   )

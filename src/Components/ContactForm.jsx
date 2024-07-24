@@ -87,7 +87,7 @@ export const ContactForm = () => {
                 type="submit"
                 className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-[#43408f] hover:bg-[#282656] h-10 w-full px-4 py-2"
               >
-                Send
+                {t('contactForm.sendButton')}
               </button>
             </form>
           </div>
