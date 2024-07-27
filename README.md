@@ -69,3 +69,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Google Auth 
+
+`gcloud auth application-default login`
+
+`Davo-2001`
+
+
+## Change directory to Psychology folder
+
+`cd /Users/lilianazlukhanyan/Downloads/Psychology`
+
+## Deploy app to server
+
+`gcloud app deploy app.yaml`
